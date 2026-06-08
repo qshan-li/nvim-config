@@ -16,28 +16,11 @@ settings["format_timeout"] = 1000
 ---@type boolean
 settings["format_notify"] = false
 
--- Set to true if you want to format ONLY the *changed lines* as defined by your version control system.
--- NOTE: This will only be respected if:
---  > The buffer is under version control (Git or Mercurial);
---  > Any server attached to the buffer supports the |DocumentRangeFormattingProvider| capability.
--- Otherwise, Neovim will fall back to formatting the whole buffer and issue a warning.
----@type boolean
-settings["format_modifications_only"] = false
-
 -- Filetypes in this list will skip LSP formatting if the value is true.
 ---@type table<string, boolean>
 settings["formatter_block_list"] = {
 	-- Example
 	lua = false,
-}
-
--- Servers in this list will skip formatting capabilities if the value is true.
----@type table<string, boolean>
-settings["server_formatting_block_list"] = {
-	clangd = true,
-	lua_ls = true,
-	ruff = false, -- set to false to enable ruff formatting, see discussion #1485
-	vtsls = true,
 }
 
 -- Directories where formatting on save is disabled.
@@ -123,11 +106,11 @@ settings["mason_lsp_servers"] = {
 	"zuban",
 }
 
--- Mason-managed sources for none-ls to install.
--- Supported sources: https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins
+-- Mason-managed tools (formatters, linters) to install.
+-- These are discovered by conform.nvim / nvim-lint via PATH.
 ---@type string[]
-settings["mason_null_ls_sources"] = {
-	"clang_format",
+settings["mason_tools"] = {
+	"clang-format",
 	"gofumpt",
 	"goimports",
 	"prettier",

@@ -36,26 +36,20 @@ completion["rachartier/tiny-inline-diagnostic.nvim"] = {
 	lazy = false,
 	config = require("completion.tiny-inline-diagnostic"),
 }
-completion["joechrisellis/lsp-format-modifications.nvim"] = {
-	lazy = true,
-	event = "LspAttach",
-}
-completion["jay-babu/mason-null-ls.nvim"] = {
+completion["stevearc/conform.nvim"] = {
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" },
-	config = require("completion.mason-null-ls"),
-	dependencies = {
-		"mason-org/mason.nvim",
-		"nvimtools/none-ls.nvim",
-	},
+	config = require("completion.conform"),
 }
-completion["nvimtools/none-ls.nvim"] = {
+completion["WhoIsSethDaniel/mason-tool-installer.nvim"] = {
 	lazy = true,
-	event = { "BufReadPre", "BufNewFile" },
-	config = require("completion.null-ls"),
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
+	event = "VeryLazy",
+	config = function()
+		require("mason-tool-installer").setup({
+			ensure_installed = require("pure-nvim.core.settings").mason_tools,
+		})
+	end,
+	dependencies = { "mason-org/mason.nvim" },
 }
 completion["monkoose/neocodeium"] = {
 	lazy = true,
