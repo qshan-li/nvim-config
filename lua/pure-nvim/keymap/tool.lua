@@ -1,6 +1,5 @@
 local bind = require("pure-nvim.keymap.bind")
 local map_cr = bind.map_cr
-local map_cu = bind.map_cu
 local map_cmd = bind.map_cmd
 local map_callback = bind.map_callback
 
@@ -657,7 +656,7 @@ local mappings = {
 			:with_silent()
 			:with_desc("tool: Open Pickers collections"),
 		["n|<leader>ff"] = map_callback(function()
-				require("snacks").picker.smart()
+				require("snacks").picker.smart({ sources = { files = { hidden = true } } })
 			end)
 			:with_noremap()
 			:with_silent()

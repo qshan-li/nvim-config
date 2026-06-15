@@ -10,29 +10,6 @@ local ts_to_swap = require("nvim-treesitter-textobjects.swap")
 local ts_to_move = require("nvim-treesitter-textobjects.move")
 local ts_to_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 
-local function close_current_buffer()
-	vim.cmd("update")
-
-	local current_buf = vim.api.nvim_get_current_buf()
-	local wins = vim.fn.win_findbuf(current_buf)
-	local listed_buffers = vim.fn.getbufinfo({ buflisted = 1 })
-	if #listed_buffers <= 1 and #vim.api.nvim_list_wins() > 1 then
-		vim.cmd("close")
-		return
-	end
-	if #wins > 1 then
-		local alt_buf = vim.fn.bufnr("#")
-		if alt_buf > 0 and vim.api.nvim_buf_is_loaded(alt_buf) then
-			vim.api.nvim_set_current_buf(alt_buf)
-		else
-			vim.cmd("close")
-		end
-		return
-	end
-
-	vim.cmd("BufDel")
-end
-
 local mappings = {
 	builtins = {
 		-- Builtins: Save & Quit

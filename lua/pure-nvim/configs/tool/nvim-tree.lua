@@ -122,7 +122,7 @@ return function()
 		},
 		filters = {
 			dotfiles = false,
-			custom = { ".git", "node_modules", ".cache" }, -- 过滤这些文件/文件夹
+			custom = { "^\\.git$", "^\\.cache$" }, -- 过滤这些文件/文件夹
 		},
 		git = {
 			enable = true,

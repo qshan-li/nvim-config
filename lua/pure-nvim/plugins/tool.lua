@@ -52,6 +52,7 @@ local snacks_picker_opts = {
 				format = "file",
 				transform = "unique_file",
 			},
+			files = { hidden = true },
 			buffers = snacks_buffer_picker,
 		},
 		-- Disabling preview syntax highlighting keeps the picker responsive in large repos.

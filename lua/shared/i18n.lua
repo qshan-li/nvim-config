@@ -236,10 +236,6 @@ M.translations = {
 	},
 }
 
-function M.get_lang()
-	return M.lang
-end
-
 function M.set_lang(lang)
 	if vim.tbl_contains(M.available_languages, lang) then
 		M.lang = lang

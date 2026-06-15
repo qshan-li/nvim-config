@@ -177,52 +177,6 @@ function M.darken(hex, amount, bg)
 	return M.blend(hex, bg or "#000000", math.abs(amount))
 end
 
----Lighten a color by blending it with the foreground color.
----@param hex string @The color in hex to lighten
----@param amount number @The amount to lighten the color
----@param fg string @The foreground color to blend with
----@return string @The lightened color as a hex string
-function M.lighten(hex, amount, fg)
-	return M.blend(hex, fg or "#FFFFFF", math.abs(amount))
-end
-
----Get RGB highlight by highlight group
----@param hl_group string @Highlight group name
----@param use_bg boolean @Returns background or not
----@param fallback_hl? string @Fallback value if the hl group is not defined
----@return string
-function M.hl_to_rgb(hl_group, use_bg, fallback_hl)
-	local hex = fallback_hl or "#000000"
-	local hlexists = pcall(vim.api.nvim_get_hl, 0, { name = hl_group, link = false })
-
-	if hlexists then
-		local result = vim.api.nvim_get_hl(0, { name = hl_group, link = false })
-		if use_bg then
-			hex = result.bg and string.format("#%06x", result.bg) or "NONE"
-		else
-			hex = result.fg and string.format("#%06x", result.fg) or "NONE"
-		end
-	end
-
-	return hex
-end
-
----Extend a highlight group
----@param name string @Target highlight group name
----@param def table @Attributes to be extended
-function M.extend_hl(name, def)
-	local hlexists = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
-	if not hlexists then
-		-- Do nothing if highlight group not found
-		return
-	end
-	local current_def = vim.api.nvim_get_hl(0, { name = name, link = false })
-	local combined_def = vim.tbl_deep_extend("force", current_def, def)
-
-	---@diagnostic disable-next-line: param-type-mismatch
-	vim.api.nvim_set_hl(0, name, combined_def)
-end
-
 ---Generate universal highlight groups
 ---@param overwrite palette? @The color to be overwritten | highest priority
 ---@return palette
@@ -317,24 +271,6 @@ function M.register_server(server, config)
 		vim.lsp.config(server, config)
 	end
 	vim.lsp.enable(server)
-end
-
----Convert number (0/1) to boolean
----@param value number @The value to check
----@return boolean|nil @Returns nil if failed
-function M.tobool(value)
-	if value == 0 then
-		return false
-	elseif value == 1 then
-		return true
-	else
-		vim.notify(
-			"Attempting to convert data of type '" .. type(value) .. "' [other than 0 or 1] to boolean",
-			vim.log.levels.ERROR,
-			{ title = "[utils] Runtime Error" }
-		)
-		return nil
-	end
 end
 
 ---@param plugin_name string @Module name of the plugin (used to setup itself)
