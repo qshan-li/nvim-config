@@ -11,20 +11,32 @@ jobs:
     name: StyLua Format Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: JohnnyMorganz/stylua-action@v4
+      - uses: actions/checkout@v5
+      - uses: JohnnyMorganz/stylua-action@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          version: 2.4.1
           args: --check init.lua lua/
 
   smoke-test:
     name: Neovim Smoke Test
     runs-on: ubuntu-latest
+    env:
+      XDG_CONFIG_HOME: ${{ runner.temp }}/xdg-config
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: rhysd/action-setup-vim@v1
         with:
           neovim: true
           version: stable
+      - name: Prepare config path
+        run: |
+          mkdir -p "$XDG_CONFIG_HOME"
+          ln -s "$GITHUB_WORKSPACE" "$XDG_CONFIG_HOME/nvim"
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
       - name: Smoke test (full)
         run: nvim -u init.lua +"qa"
+      - name: Smoke test (config invariants)
+        run: nvim --headless -u init.lua -c "lua local ok, err = pcall(dofile, 'tests/config_smoke.lua'); if not ok then vim.api.nvim_err_writeln(err); vim.cmd.cquit() else vim.cmd.qa() end"
+      - name: Smoke test (landing recovery)
+        run: nvim --headless --noplugin -u NONE --cmd "set rtp+=." -c "lua local ok, err = pcall(dofile, 'tests/landing_recovery_spec.lua'); if not ok then vim.api.nvim_err_writeln(err); vim.cmd.cquit() end"

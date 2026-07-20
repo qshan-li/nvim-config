@@ -63,7 +63,10 @@ end
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/clangd.lua
 return function(defaults)
 	vim.lsp.config("clangd", {
-		capabilities = vim.tbl_deep_extend("keep", { offsetEncoding = { "utf-16", "utf-8" } }, defaults.capabilities),
+		capabilities = defaults.capabilities,
+		before_init = function(params)
+			params.capabilities.offsetEncoding = nil
+		end,
 		single_file_support = true,
 		cmd = {
 			"clangd",
@@ -76,7 +79,6 @@ return function(defaults)
 			"--clang-tidy",
 			"--completion-parse=auto",
 			"--completion-style=bundled",
-			"--function-arg-placeholders",
 			"--header-insertion-decorators",
 			"--header-insertion=iwyu",
 			"--limit-references=1000",
@@ -99,6 +101,10 @@ return function(defaults)
 			vim.api.nvim_buf_create_user_command(bufnr, "LspClangdShowSymbolInfo", function()
 				symbol_info(bufnr, client)
 			end, { desc = "Show symbol info" })
+
+			vim.keymap.set("n", "<leader>h", function()
+				switch_source_header_splitcmd(bufnr, "edit", client)
+			end, { buffer = bufnr, silent = true, desc = "clangd: Switch source/header" })
 		end,
 	})
 end

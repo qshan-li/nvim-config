@@ -171,11 +171,6 @@ function autocmd.load_autocmds()
 			{ "FileType", "minintro", "setlocal showtabline=0" },
 			{ "FileType", "markdown", "setlocal wrap" },
 			{ "FileType", "dap-repl", "lua require('dap.ext.autocompl').attach()" },
-			{
-				"FileType",
-				"c,cpp",
-				"nnoremap <silent> <buffer> <leader>h <Cmd>ClangdSwitchSourceHeader<CR>",
-			},
 		},
 		yank = {
 			{

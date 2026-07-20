@@ -9,15 +9,15 @@ local createdir = function()
 		global.cache_dir .. "/swap",
 		global.cache_dir .. "/tags",
 		global.cache_dir .. "/undo",
+		global.vim_path .. "/spell",
 	}
-	-- Only check whether cache_dir exists, this would be enough.
 	if vim.fn.isdirectory(global.cache_dir) == 0 then
 		---@diagnostic disable-next-line: param-type-mismatch
 		vim.fn.mkdir(global.cache_dir, "p")
-		for _, dir in pairs(data_dirs) do
-			if vim.fn.isdirectory(dir) == 0 then
-				vim.fn.mkdir(dir, "p")
-			end
+	end
+	for _, dir in ipairs(data_dirs) do
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
 		end
 	end
 end

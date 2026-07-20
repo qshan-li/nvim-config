@@ -20,17 +20,17 @@ editor["ojroques/nvim-bufdel"] = {
 }
 editor["folke/flash.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = "VeryLazy",
 	config = require("editor.flash"),
 }
 editor["numToStr/Comment.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = { "BufReadPost", "BufNewFile" },
 	config = require("editor.comment"),
 }
 editor["echasnovski/mini.align"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	keys = { "gea", "geA" },
 	config = require("editor.align"),
 }
 editor["echasnovski/mini.cursorword"] = {
@@ -40,7 +40,7 @@ editor["echasnovski/mini.cursorword"] = {
 }
 editor["brenoprata10/nvim-highlight-colors"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = { "BufReadPost", "BufNewFile" },
 	config = require("editor.highlight-colors"),
 }
 editor["romainl/vim-cool"] = {

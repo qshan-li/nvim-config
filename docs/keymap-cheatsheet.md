@@ -154,7 +154,8 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `<leader>tp` | n | Pick terminal |
 | `<leader>tr` | n | Rename terminal |
 | `<leader>tq` | n | Kill terminal |
-| `<A-1..9>` | n, t | Switch to panel terminal 1-9 |
+| `<A-1..9>` | n | Switch to buffer 1-9 |
+| `<A-1..9>` | t | Switch to panel terminal 1-9 |
 | `]T` / `[T` | n | Next/prev panel terminal |
 | `<C-n>` | t (in terminal) | New terminal instance |
 

@@ -74,18 +74,6 @@ settings["transparent_background"] = false
 ---@type "dark"|"light"
 settings["background"] = "light"
 
--- Set the command for opening external URLs.
--- This is ignored on Windows and macOS, which use built-in handlers.
----@type string
-settings["external_browser"] = "chrome-cli open"
-
--- Set the search backend here.
--- `telescope` is fine for most use cases.
--- `fzf` is faster for large repos but needs the `fzf` binary in $PATH.
--- If missing, errors are expected until the binary is installed.
----@type "telescope"|"fzf"|"snacks"
-settings["search_backend"] = "snacks"
-
 -- Set to false to disable LSP inlay hints.
 ---@type boolean
 settings["lsp_inlayhints"] = false

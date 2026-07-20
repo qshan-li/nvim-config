@@ -39,6 +39,7 @@ completion["rachartier/tiny-inline-diagnostic.nvim"] = {
 completion["stevearc/conform.nvim"] = {
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" },
+	cmd = { "Format", "FormatToggle", "FormatterToggleFt" },
 	config = require("completion.conform"),
 }
 completion["WhoIsSethDaniel/mason-tool-installer.nvim"] = {

@@ -1,6 +1,4 @@
 local tool = {}
-local settings = require("pure-nvim.core.settings")
-
 local snacks_buffer_picker = {
 	hidden = false,
 	unloaded = true,
@@ -120,7 +118,7 @@ tool["folke/trouble.nvim"] = {
 }
 tool["folke/which-key.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = "VeryLazy",
 	config = require("tool.which-key"),
 }
 tool["gelguy/wilder.nvim"] = {
@@ -128,14 +126,6 @@ tool["gelguy/wilder.nvim"] = {
 	event = "CmdlineEnter",
 	config = require("tool.wilder"),
 	dependencies = "romgrk/fzy-lua-native",
-}
--- Needs `fzf` installed and in $PATH
-tool["ibhagwan/fzf-lua"] = {
-	lazy = true,
-	cond = (settings.search_backend == "fzf"),
-	cmd = "FzfLua",
-	config = require("tool.fzf-lua"),
-	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 ----------------------------------------------------------------------
 --                           DAP Plugins                            --

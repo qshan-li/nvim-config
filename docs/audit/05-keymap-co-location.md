@@ -6,15 +6,14 @@ Severity: **Medium** | Category: Architecture / DX
 
 插件规范在 `plugins/*.lua`，对应按键在 `keymap/*.lua`，添加或删除插件需要同时编辑两个目录。
 
-> **Note**: `settings.search_backend` 默认为 `"snacks"`，picker keymap 实际调用 `require("snacks").picker.*`。
-> `fzf-lua` 仅在 `search_backend == "fzf"` 时启用（`plugins/tool.lua:134`）。
+> **Note**: picker keymap 统一调用 `require("snacks").picker.*`，搜索后端固定为 Snacks。
 
 ## Current Structure
 
 ```
 lua/pure-nvim/
 ├── plugins/
-│   ├── tool.lua          # snacks.nvim / fzf-lua spec (no keys)
+│   ├── tool.lua          # snacks.nvim spec (no keys)
 │   ├── editor.lua        # flash.nvim spec (no keys)
 │   └── completion.lua    # LSP spec (no keys)
 ├── keymap/
@@ -22,7 +21,6 @@ lua/pure-nvim/
 │   ├── editor.lua        # flash.nvim keymaps
 │   └── completion.lua    # gd, gr, K → LSP actions
 └── configs/
-    ├── tool/fzf-lua.lua  # fzf-lua setup
     ├── editor/flash.lua  # flash.nvim setup
     └── completion/lsp.lua # LSP setup
 ```

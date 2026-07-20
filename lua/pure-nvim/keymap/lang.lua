@@ -1,16 +1,17 @@
-local bind = require("pure-nvim.keymap.bind")
-local map_cr = bind.map_cr
-
-local mappings = {
-	plugins = {
-		-- Plugin: render-markdown.nvim
-		["n|<F1>"] = map_cr("RenderMarkdown toggle")
-			:with_noremap()
-			:with_silent()
-			:with_desc("tool: toggle markdown preview within nvim"),
-		-- Plugin: MarkdownPreview
-		["n|<F12>"] = map_cr("MarkdownPreviewToggle"):with_noremap():with_silent():with_desc("tool: Preview markdown"),
-	},
-}
-
-bind.nvim_load_mapping(mappings.plugins)
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function(args)
+		vim.keymap.set("n", "<F1>", "<Cmd>RenderMarkdown toggle<CR>", {
+			buffer = args.buf,
+			noremap = true,
+			silent = true,
+			desc = "tool: toggle markdown preview within nvim",
+		})
+		vim.keymap.set("n", "<F12>", "<Cmd>MarkdownPreviewToggle<CR>", {
+			buffer = args.buf,
+			noremap = true,
+			silent = true,
+			desc = "tool: Preview markdown",
+		})
+	end,
+})

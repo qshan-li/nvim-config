@@ -3,7 +3,8 @@ local global = require("pure-nvim.core.global")
 local is_mac = global.is_mac
 local vim_path = global.vim_path
 local data_dir = global.data_dir
-local lazy_path = data_dir .. "lazy/lazy.nvim"
+local pure_lazy_root = data_dir .. "lazy-pure"
+local lazy_path = pure_lazy_root .. "/lazy.nvim"
 local modules_dir = vim_path .. "/lua/pure-nvim"
 
 local settings = require("pure-nvim.core.settings")
@@ -54,6 +55,7 @@ end
 
 function Lazy:load_lazy()
 	if not vim.uv.fs_stat(lazy_path) then
+		vim.fn.mkdir(vim.fn.fnamemodify(lazy_path, ":h"), "p")
 		local lazy_repo = use_ssh and "git@github.com:folke/lazy.nvim.git " or "https://github.com/folke/lazy.nvim.git "
 		api.nvim_command("!git clone --filter=blob:none --branch=stable " .. lazy_repo .. lazy_path)
 	end
@@ -61,7 +63,8 @@ function Lazy:load_lazy()
 
 	local clone_prefix = use_ssh and "git@github.com:%s.git" or "https://github.com/%s.git"
 	local lazy_settings = {
-		root = data_dir .. "lazy", -- directory where plugins will be installed
+		root = pure_lazy_root,
+		lockfile = vim_path .. "/lazy-lock-pure.json",
 		git = {
 			-- log = { "-10" }, -- show the last 10 commits
 			timeout = 300,

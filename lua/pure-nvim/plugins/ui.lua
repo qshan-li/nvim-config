@@ -8,6 +8,15 @@ ui["eoh-bse/minintro.nvim"] = {
 ui["akinsho/bufferline.nvim"] = {
 	lazy = true,
 	event = { "BufReadPre", "BufAdd", "BufNewFile" },
+	cmd = {
+		"BufferLineCyclePrev",
+		"BufferLineCycleNext",
+		"BufferLineMoveNext",
+		"BufferLineMovePrev",
+		"BufferLineSortByExtension",
+		"BufferLineSortByDirectory",
+		"BufferLineGoToBuffer",
+	},
 	config = require("ui.bufferline"),
 }
 ui["rose-pine/neovim"] = {
@@ -22,12 +31,12 @@ ui["qshan-li/neovim-theme-vitesse"] = {
 }
 ui["lewis6991/gitsigns.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = { "BufReadPre", "BufNewFile" },
 	config = require("ui.gitsigns"),
 }
 ui["lukas-reineke/indent-blankline.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = { "BufReadPre", "BufNewFile" },
 	config = require("ui.indent-blankline"),
 }
 ui["nvim-lualine/lualine.nvim"] = {
@@ -42,22 +51,35 @@ ui["nvim-mini/mini.nvim"] = {
 }
 ui["folke/paint.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	ft = { "lua", "python" },
 	config = require("ui.paint"),
 }
 ui["mrjones2014/smart-splits.nvim"] = {
 	lazy = true,
-	event = { "CursorHoldI", "CursorHold" },
+	cmd = {
+		"SmartResizeLeft",
+		"SmartResizeRight",
+		"SmartResizeUp",
+		"SmartResizeDown",
+		"SmartCursorMoveLeft",
+		"SmartCursorMoveRight",
+		"SmartCursorMoveUp",
+		"SmartCursorMoveDown",
+		"SmartSwapLeft",
+		"SmartSwapRight",
+		"SmartSwapUp",
+		"SmartSwapDown",
+	},
 	config = require("ui.splits"),
 }
 ui["folke/edgy.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = "VeryLazy",
 	config = require("ui.edgy"),
 }
 ui["folke/todo-comments.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = { "BufReadPost", "BufNewFile" },
 	config = require("ui.todo"),
 	dependencies = "nvim-lua/plenary.nvim",
 }

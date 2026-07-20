@@ -3,7 +3,6 @@ local map_cr = bind.map_cr
 local map_cmd = bind.map_cmd
 local map_callback = bind.map_callback
 
-local Terminal = require("toggleterm.terminal").Terminal
 local _lazygit = nil
 
 local panel_terms = {}
@@ -18,6 +17,7 @@ local function ensure_panel_term(id)
 
 	local name = panel_term_names[id] or ("Terminal " .. id)
 	panel_term_names[id] = name
+	local Terminal = require("toggleterm.terminal").Terminal
 	term = Terminal:new({ direction = "horizontal", hidden = true, display_name = name })
 	panel_terms[id] = term
 	return term
@@ -412,108 +412,54 @@ local mappings = {
 			:with_desc("terminal: Previous panel terminal"),
 
 		-- Alt + 数字键切换终端实例
-		["n|<A-1>"] = map_callback(function()
-				open_panel_term(1)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 1"),
 		["t|<A-1>"] = map_callback(function()
 				open_panel_term(1)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 1"),
-		["n|<A-2>"] = map_callback(function()
-				open_panel_term(2)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 2"),
 		["t|<A-2>"] = map_callback(function()
 				open_panel_term(2)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 2"),
-		["n|<A-3>"] = map_callback(function()
-				open_panel_term(3)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 3"),
 		["t|<A-3>"] = map_callback(function()
 				open_panel_term(3)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 3"),
-		["n|<A-4>"] = map_callback(function()
-				open_panel_term(4)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 4"),
 		["t|<A-4>"] = map_callback(function()
 				open_panel_term(4)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 4"),
-		["n|<A-5>"] = map_callback(function()
-				open_panel_term(5)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 5"),
 		["t|<A-5>"] = map_callback(function()
 				open_panel_term(5)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 5"),
-		["n|<A-6>"] = map_callback(function()
-				open_panel_term(6)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 6"),
 		["t|<A-6>"] = map_callback(function()
 				open_panel_term(6)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 6"),
-		["n|<A-7>"] = map_callback(function()
-				open_panel_term(7)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 7"),
 		["t|<A-7>"] = map_callback(function()
 				open_panel_term(7)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 7"),
-		["n|<A-8>"] = map_callback(function()
-				open_panel_term(8)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 8"),
 		["t|<A-8>"] = map_callback(function()
 				open_panel_term(8)
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("terminal: Panel 8"),
-		["n|<A-9>"] = map_callback(function()
-				open_panel_term(9)
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("terminal: Panel 9"),
 		["t|<A-9>"] = map_callback(function()
 				open_panel_term(9)
 			end)
