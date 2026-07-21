@@ -89,11 +89,6 @@ tool["nvim-tree/nvim-tree.lua"] = {
 	config = require("tool.nvim-tree"),
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
-tool["ibhagwan/smartyank.nvim"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("tool.smartyank"),
-}
 tool["folke/snacks.nvim"] = {
 	lazy = true,
 	event = "VeryLazy",
