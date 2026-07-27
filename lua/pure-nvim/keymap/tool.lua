@@ -205,6 +205,7 @@ local function pick_panel_term()
 end
 
 local function open_split_term(start_in_normal)
+	local Terminal = require("toggleterm.terminal").Terminal
 	Terminal:new({ direction = "horizontal", hidden = true }):toggle()
 	vim.schedule(function()
 		if start_in_normal then
@@ -314,6 +315,7 @@ local mappings = {
 		["t|<A-d>"] = map_cmd("<Cmd>ToggleTerm<CR>"):with_noremap():with_silent():with_desc("terminal: Toggle float"),
 		["n|<leader>gg"] = map_callback(function()
 				if vim.fn.executable("lazygit") == 1 then
+					local Terminal = require("toggleterm.terminal").Terminal
 					if not _lazygit then
 						_lazygit = Terminal:new({
 							cmd = "lazygit",
