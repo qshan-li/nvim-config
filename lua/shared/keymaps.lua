@@ -100,13 +100,9 @@ function M.setup()
 		local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 		if filetype == "NvimTree" then
 			-- 使用 nvim-tree API 获取节点路径
-			local ok, api = pcall(require, "nvim-tree.api")
-			if ok then
-				local node = api.tree.get_node_under_cursor()
-				absolute_path = node.absolute_path
-			else
-				return vim.notify("nvim-tree API not available", vim.log.levels.ERROR)
-			end
+			local api = require("nvim-tree.api")
+			local node = api.tree.get_node_under_cursor()
+			absolute_path = node.absolute_path
 		else
 			-- 普通文件使用原逻辑
 			absolute_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p")
@@ -120,14 +116,10 @@ function M.setup()
 		local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 		if filetype == "NvimTree" then
 			-- 使用 nvim-tree API 获取节点路径
-			local ok, api = pcall(require, "nvim-tree.api")
-			if ok then
-				local node = api.tree.get_node_under_cursor()
-				-- 如果是目录，使用目录路径；如果是文件，使用父目录路径
-				dir_path = node.type == "directory" and node.absolute_path or vim.fs.dirname(node.absolute_path)
-			else
-				return vim.notify("nvim-tree API not available", vim.log.levels.ERROR)
-			end
+			local api = require("nvim-tree.api")
+			local node = api.tree.get_node_under_cursor()
+			-- 如果是目录，使用目录路径；如果是文件，使用父目录路径
+			dir_path = node.type == "directory" and node.absolute_path or vim.fs.dirname(node.absolute_path)
 		else
 			-- 普通文件使用原逻辑
 			dir_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h")
