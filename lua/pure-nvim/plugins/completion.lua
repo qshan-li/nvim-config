@@ -33,7 +33,8 @@ completion["dmmulroy/ts-error-translator.nvim"] = {
 	end,
 }
 completion["rachartier/tiny-inline-diagnostic.nvim"] = {
-	lazy = false,
+	lazy = true,
+	event = "LspAttach",
 	config = require("completion.tiny-inline-diagnostic"),
 }
 completion["stevearc/conform.nvim"] = {

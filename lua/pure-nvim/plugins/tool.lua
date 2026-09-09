@@ -71,7 +71,8 @@ local snacks_picker_opts = {
 -- 	config = require("tool.fcitx5"),
 -- }
 tool["Bekaboo/dropbar.nvim"] = {
-	lazy = false,
+	lazy = true,
+	event = { "BufReadPost", "BufNewFile" },
 	config = require("tool.dropbar"),
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
