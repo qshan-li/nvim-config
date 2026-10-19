@@ -30,12 +30,6 @@ return function()
 					text_align = "center",
 					padding = 0,
 				},
-				{
-					filetype = "trouble",
-					text = "LSP Outline",
-					text_align = "center",
-					padding = 0,
-				},
 			},
 		},
 		highlights = {},

@@ -107,15 +107,6 @@ settings["mason_tools"] = {
 	"vint",
 }
 
--- Mason-managed DAP adapters to install and configure.
--- Supported DAPs: https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
----@type string[]
-settings["mason_dap_adapters"] = {
-	"codelldb", -- C-Family
-	"delve", -- Go
-	"python", -- Python (debugpy)
-}
-
 -- GUI settings for clients like `neovide` or `neovim-qt`.
 -- NOTE: Only the following GUI options are supported; others will be ignored.
 ---@type { font_name: string, font_size: number }

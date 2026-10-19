@@ -170,7 +170,6 @@ function autocmd.load_autocmds()
 			{ "FileType", "*", "setlocal formatoptions-=cro" },
 			{ "FileType", "minintro", "setlocal showtabline=0" },
 			{ "FileType", "markdown", "setlocal wrap" },
-			{ "FileType", "dap-repl", "lua require('dap.ext.autocompl').attach()" },
 		},
 		yank = {
 			{

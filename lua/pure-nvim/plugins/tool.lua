@@ -107,11 +107,6 @@ tool["akinsho/toggleterm.nvim"] = {
 	},
 	config = require("tool.toggleterm"),
 }
-tool["folke/trouble.nvim"] = {
-	lazy = true,
-	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
-	config = require("tool.trouble"),
-}
 tool["folke/which-key.nvim"] = {
 	lazy = true,
 	event = "VeryLazy",
@@ -123,31 +118,4 @@ tool["gelguy/wilder.nvim"] = {
 	config = require("tool.wilder"),
 	dependencies = "romgrk/fzy-lua-native",
 }
-----------------------------------------------------------------------
---                           DAP Plugins                            --
-----------------------------------------------------------------------
-tool["mfussenegger/nvim-dap"] = {
-	lazy = true,
-	cmd = {
-		"DapSetLogLevel",
-		"DapShowLog",
-		"DapContinue",
-		"DapToggleBreakpoint",
-		"DapToggleRepl",
-		"DapStepOver",
-		"DapStepInto",
-		"DapStepOut",
-		"DapTerminate",
-	},
-	config = require("tool.dap"),
-	dependencies = {
-		{ "jay-babu/mason-nvim-dap.nvim" },
-		{
-			"rcarriga/nvim-dap-ui",
-			dependencies = "nvim-neotest/nvim-nio",
-			config = require("tool.dap.dapui"),
-		},
-	},
-}
-
 return tool

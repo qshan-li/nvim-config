@@ -333,23 +333,6 @@ local mappings = {
 			:with_silent()
 			:with_desc("git: Toggle lazygit"),
 
-		["n|gt"] = map_cr("Trouble diagnostics toggle")
-			:with_noremap()
-			:with_silent()
-			:with_desc("lsp: Toggle trouble list"),
-		["n|<leader>lw"] = map_cr("Trouble diagnostics toggle")
-			:with_noremap()
-			:with_silent()
-			:with_desc("lsp: Show workspace diagnostics"),
-		["n|<leader>lp"] = map_cr("Trouble project_diagnostics toggle")
-			:with_noremap()
-			:with_silent()
-			:with_desc("lsp: Show project diagnostics"),
-		["n|<leader>ld"] = map_cr("Trouble diagnostics toggle filter.buf=0")
-			:with_noremap()
-			:with_silent()
-			:with_desc("lsp: Show document diagnostics"),
-
 		["n|<C-p>"] = map_callback(function()
 				toggle_panel_term()
 			end)

@@ -1,15 +1,4 @@
 return function()
-	local function trouble_filter(position)
-		return function(_, win)
-			local tw = vim.w[win].trouble
-			return tw
-				and tw.position == position
-				and tw.type == "split"
-				and tw.relative == "editor"
-				and not vim.w[win].trouble_preview
-		end
-	end
-
 	require("pure-nvim.utils").load_plugin("edgy", {
 		animate = { enabled = false },
 		close_when_all_hidden = true,
@@ -32,18 +21,7 @@ return function()
 				win:resize("width", 2)
 			end,
 		},
-		left = {
-			{
-				ft = "trouble",
-				pinned = true,
-				collapsed = false,
-				size = { height = 1, width = 0.15 },
-				open = function()
-					return vim.b.buftype == "" and "Trouble symbols toggle win.position=left"
-				end,
-				filter = trouble_filter("left"),
-			},
-		},
+		left = {},
 		bottom = {
 			{ ft = "qf", size = { height = 0.3 } },
 			{
