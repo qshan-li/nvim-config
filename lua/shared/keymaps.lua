@@ -33,9 +33,6 @@ function M.setup()
 	vim.keymap.set("i", "<C-v>", "<C-r>+", { desc = "Paste clipboard", noremap = true })
 	vim.keymap.set("c", "<C-v>", "<C-r>+", { desc = "Paste clipboard", noremap = true })
 
-	vim.keymap.set("n", "p", "P", { desc = "Paste before cursor (preserve register)", noremap = true })
-	vim.keymap.set("v", "p", "P", { desc = "Paste before cursor (preserve register)", noremap = true })
-
 	-- 在特定 buffer 的 normal 模式下添加 Ctrl+C 映射为 Esc
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = {
