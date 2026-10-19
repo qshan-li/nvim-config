@@ -20,6 +20,12 @@ return function()
 				-- 不让 <c-v> 触发分屏，保持终端粘贴行为
 				["<c-v>"] = false,
 			},
+			fzf = {
+				-- fzf-lua 默认把 ctrl-u 绑成清空输入行，ctrl-d 也没有半屏滚动。
+				-- 恢复成列表半屏上下滚动。
+				["ctrl-d"] = "half-page-down",
+				["ctrl-u"] = "half-page-up",
+			},
 		},
 		previewers = {
 			builtin = {
