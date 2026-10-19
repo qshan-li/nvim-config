@@ -7,7 +7,7 @@ local map_callback = bind.map_callback
 local mappings = {
 	builtins = {
 		-- Builtins: Buffer
-		["n|<leader>bn"] = map_cu("enew"):with_noremap():with_silent():with_desc("buffer: New"),
+		["n|<leader>b"] = map_cu("enew"):with_noremap():with_silent():with_desc("buffer: New"),
 
 		-- Builtins: Terminal
 		["t|<C-w>h"] = map_cmd("<Cmd>wincmd h<CR>"):with_silent():with_noremap():with_desc("window: Focus left"),

@@ -71,7 +71,6 @@ return function()
 		spec = {
 			{ "<leader>g", group = icons.git.Git .. " " .. i18n.t("git") },
 			{ "<leader>s", group = icons.cmp.tmux .. " " .. i18n.t("session") },
-			{ "<leader>b", group = icons.ui.Buffer .. " " .. i18n.t("buffer") },
 			{ "<leader>S", group = icons.ui.Search .. " " .. i18n.t("search") },
 			{ "<leader>W", group = icons.ui.Window .. " " .. i18n.t("window") },
 			{ "<leader>p", group = icons.ui.Package .. " " .. i18n.t("package") },

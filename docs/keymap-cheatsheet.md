@@ -173,7 +173,7 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `<A-h/j/k/l>` | n | Resize window |
 | `<A-S-i/o>` | n | Move buffer next/prev |
 | `<A-q>` | n | Close buffer |
-| `<leader>bn` | n | New buffer |
+| `<leader>b` | n | New buffer |
 | `<C-Tab>` | n | Buffer picker |
 
 ## File Tree (NvimTree)
