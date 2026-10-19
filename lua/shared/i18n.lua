@@ -20,6 +20,7 @@ M.translations = {
 		open_with = "Open With",
 		path = "Path",
 		quit = "Quit",
+		ui = "UI",
 		quit_all = "quit: Quit all without saving",
 		toggle_language = "ui: Toggle Which-Key Language",
 
@@ -174,6 +175,7 @@ M.translations = {
 		open_with = "打开方式",
 		path = "路径",
 		quit = "退出",
+		ui = "界面",
 		quit_all = "quit: 不保存退出全部",
 		toggle_language = "ui: 切换 Which-Key 语言",
 

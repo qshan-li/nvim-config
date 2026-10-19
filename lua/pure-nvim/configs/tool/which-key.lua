@@ -81,6 +81,7 @@ return function()
 			{ "<leader>t", group = icons.ui.Tab .. " " .. i18n.t("terminal") },
 			{ "<leader>O", group = icons.ui.Project .. " " .. i18n.t("open_with") },
 			{ "<leader>r", group = icons.ui.Note .. " " .. i18n.t("path") },
+			{ "<leader>u", group = icons.ui.Gear .. " " .. i18n.t("ui") },
 			{ "<leader>q", group = icons.ui.SignOut .. " " .. i18n.t("quit") },
 		},
 	})

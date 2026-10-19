@@ -105,11 +105,11 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `gci` / `gco` | n | Incoming/outgoing calls |
 | `K` | n | Show documentation |
 | `<A-f12>/` | n, v | Code action |
-| `<leader>u` | n | Go to references |
 | `<leader>li` | n | LSP info (`:checkhealth vim.lsp`) |
 | `<leader>lr` | n | Restart LSP (`:lsp restart`) |
 | `<leader>lv` | n | Toggle diagnostic virtual text |
 | `<leader>lh` | n | Toggle inlay hints |
+| `<leader>lu` | n | Go to references |
 
 ## Formatting
 
@@ -207,4 +207,4 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<leader>th` | n | Switch theme |
+| `<leader>uh` | n | Switch theme |

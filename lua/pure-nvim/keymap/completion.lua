@@ -139,7 +139,7 @@ function M.lsp(buf)
 			:with_silent()
 			:with_buffer(buf)
 			:with_desc("lsp: Hover or Diagnostics"),
-		["n|<leader>u"] = map_callback(function()
+		["n|<leader>lu"] = map_callback(function()
 				vim.lsp.buf.references(nil, {
 					on_list = function(list)
 						vim.fn.setqflist({}, " ", list)
