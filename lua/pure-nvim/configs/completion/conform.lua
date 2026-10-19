@@ -7,17 +7,8 @@ return function()
 
 	require("pure-nvim.utils").load_plugin("conform", {
 		formatters_by_ft = {
-			c = { "clang-format" },
-			cpp = { "clang-format" },
-			objc = { "clang-format" },
-			objcpp = { "clang-format" },
-			cs = { "clang-format" },
-			cuda = { "clang-format" },
-			proto = { "clang-format" },
 			lua = { "stylua" },
-			go = { "gofumpt", "goimports" },
 			sh = { "shfmt" },
-			python = { lsp_format = "fallback" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			javascriptreact = { "prettier" },

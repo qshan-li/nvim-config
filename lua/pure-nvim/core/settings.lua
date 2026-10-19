@@ -82,29 +82,21 @@ settings["lsp_inlayhints"] = false
 -- Full list: https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/configs
 ---@type string[]
 settings["mason_lsp_servers"] = {
-	"bashls",
-	"clangd",
-	"gopls",
 	"html",
 	"jsonls",
 	"lua_ls",
-	"ruff",
+	"marksman",
 	"vtsls",
 	"vue_ls",
-	"zuban",
 }
 
 -- Mason-managed tools (formatters, linters) to install.
 -- These are discovered by conform.nvim / nvim-lint via PATH.
 ---@type string[]
 settings["mason_tools"] = {
-	"clang-format",
-	"gofumpt",
-	"goimports",
 	"prettier",
 	"shfmt",
 	"stylua",
-	"vint",
 }
 
 -- GUI settings for clients like `neovide` or `neovim-qt`.
