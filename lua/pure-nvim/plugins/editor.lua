@@ -4,6 +4,12 @@ editor["olimorris/persisted.nvim"] = {
 	lazy = false,
 	config = require("editor.persisted"),
 }
+editor["sindrets/diffview.nvim"] = {
+	lazy = true,
+	cmd = { "DiffviewOpen", "DiffviewClose" },
+	config = require("editor.diffview"),
+	dependencies = "nvim-lua/plenary.nvim",
+}
 editor["m4xshen/autoclose.nvim"] = {
 	lazy = true,
 	event = "InsertEnter",

@@ -1,12 +1,12 @@
 local tool = {}
 
 -- This is specifically for fcitx5 users who code in languages other than English
--- tool["pysan3/fcitx5.nvim"] = {
--- 	lazy = true,
--- 	event = "BufReadPost",
--- 	cond = vim.fn.executable("fcitx5-remote") == 1,
--- 	config = require("tool.fcitx5"),
--- }
+tool["pysan3/fcitx5.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	cond = vim.fn.executable("fcitx5-remote") == 1,
+	config = require("tool.fcitx5"),
+}
 tool["Bekaboo/dropbar.nvim"] = {
 	lazy = true,
 	event = { "BufReadPost", "BufNewFile" },

@@ -60,7 +60,7 @@ settings["load_big_files_faster"] = true
 settings["palette_overwrite"] = {}
 
 -- Set the colorscheme here.
--- Valid options: `rose-pine`, `rose-pine-main`, `rose-pine-moon`, `rose-pine-dawn`, `vitesse`, `vitesse-dark`, `vitesse-light`, `vitesse-black`.
+-- Valid options: `rose-pine`, `rose-pine-main`, `rose-pine-moon`, `rose-pine-dawn`, `vitesse`, `vitesse-dark`, `vitesse-light`, `vitesse-black`, `catppuccin-latte`, `catppuccin-mocha`, `catppuccin-frappe`, `catppuccin-macchiato`, `teide`.
 ---@type string
 settings["colorscheme"] = "rose-pine"
 

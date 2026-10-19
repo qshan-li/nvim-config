@@ -674,6 +674,11 @@ local mappings = {
 					{ name = "vitesse-dark", display = "Vitesse (Dark)" },
 					{ name = "vitesse-light", display = "Vitesse (Light)" },
 					{ name = "vitesse-black", display = "Vitesse (Black)" },
+					{ name = "catppuccin-latte", display = "Catppuccin (Latte)" },
+					{ name = "catppuccin-mocha", display = "Catppuccin (Mocha)" },
+					{ name = "catppuccin-frappe", display = "Catppuccin (Frappe)" },
+					{ name = "catppuccin-macchiato", display = "Catppuccin (Macchiato)" },
+					{ name = "teide", display = "Teide" },
 				}
 
 				vim.ui.select(themes, {
