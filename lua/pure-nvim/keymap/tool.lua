@@ -660,7 +660,7 @@ local mappings = {
 			:with_silent()
 			:with_desc("tool: Find files"),
 		["n|<leader>fp"] = map_callback(function()
-				require("fzf-lua").grep()
+				require("fzf-lua").live_grep()
 			end)
 			:with_noremap()
 			:with_silent()

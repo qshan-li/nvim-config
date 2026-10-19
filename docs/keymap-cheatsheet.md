@@ -49,7 +49,7 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | Key | Mode | Description |
 |-----|------|-------------|
 | `<leader>ff` | n | Find files (fzf-lua) |
-| `<leader>fp` | n | Grep patterns |
+| `<leader>fp` | n | Live grep (fzf-lua) |
 | `<leader>fs` | v | Grep word under cursor |
 | `<leader>fg` | n | Git status |
 | `<leader>fd` | n | Workspace diagnostics |
