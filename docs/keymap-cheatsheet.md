@@ -48,14 +48,14 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<leader>ff` | n | Smart find files |
+| `<leader>ff` | n | Find files (fzf-lua) |
 | `<leader>fp` | n | Grep patterns |
-| `<leader>fs` | v | Grep selected text |
+| `<leader>fs` | v | Grep word under cursor |
 | `<leader>fg` | n | Git status |
-| `<leader>fd` | n | Diagnostics |
+| `<leader>fd` | n | Workspace diagnostics |
 | `<leader>fm` | n | Keymaps |
 | `<leader>fR` | n | Resume last search |
-| `<leader>fc` | n | Picker collections |
+| `<leader>fc` | n | Picker list (all builtin pickers) |
 
 ## Flash (Jump)
 
@@ -106,7 +106,6 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `<leader>dk/dj` | n | Prev/next diagnostic |
 | `<leader>li` | n | LSP info |
 | `<leader>lr` | n | Restart LSP |
-| `<leader>co` | n | Toggle outline |
 | `<leader>lv` | n | Toggle diagnostic virtual text |
 | `<leader>lh` | n | Toggle inlay hints |
 
@@ -159,29 +158,13 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `]T` / `[T` | n | Next/prev panel terminal |
 | `<C-n>` | t (in terminal) | New terminal instance |
 
-## Debug (DAP)
+## Diagnostics & Symbols
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<F6>` | n | Run/Continue |
-| `<F7>` | n | Stop |
-| `<F8>` | n | Toggle breakpoint |
-| `<F9>` | n | Step into |
-| `<F10>` | n | Step out |
-| `<F11>` | n | Step over |
-| `<leader>db` | n | Conditional breakpoint |
-| `<leader>dc` | n | Run to cursor |
-| `<leader>dl` | n | Run last |
-| `<leader>do` | n | Open REPL |
-
-## Diagnostics (Trouble)
-
-| Key | Mode | Description |
-|-----|------|-------------|
-| `gt` | n | Toggle trouble list |
-| `<leader>lw` | n | Workspace diagnostics |
-| `<leader>lp` | n | Project diagnostics |
-| `<leader>ld` | n | Document diagnostics |
+| `<leader>fd` | n | Workspace diagnostics (fzf-lua) |
+| `gto` | n | Workspace symbols (fzf-lua) |
+| `<leader>dk/dj` | n | Prev/next diagnostic |
 
 ## Window & Buffer
 

@@ -1,6 +1,8 @@
 # 在 Neovide 中预览图片：调研报告
 
 > 调研日期：2026-08-25。环境：WSL2 (WSLg) + Neovide + 本仓库（lazy.nvim，pure-nvim 侧）。
+>
+> 后续更新（2026-10-19）：本仓库已移除 `folke/snacks.nvim`，picker 改为 `fzf-lua`。本文中与 snacks.image 相关的建议需要重新评估；Neovide 主路径（`<leader>O3` 调用 Windows 查看器）已落地。
 
 ## TL;DR（结论先行）
 
@@ -9,7 +11,7 @@
 1. **不要**为了 Neovide 安装 `3rd/image.nvim` 或启用 `hologram.nvim`——作者已明确声明不支持 Neovide（[image.nvim#90](https://github.com/3rd/image.nvim/issues/90)）。
 2. **推荐双轨方案**：
    - **Neovide 主路径**：自定义一个「用系统查看器打开图片」的快捷键（零新增依赖，WSL 下调 `explorer.exe` 用 Windows 照片查看器打开），本仓库只需改 3 个文件即可落地，见[集成方案](#五针对本仓库的集成方案)。
-   - **终端副路径**：本仓库已装 `folke/snacks.nvim`，其 **image 模块**（snacks.image）开箱即用，仅依赖 ImageMagick；在支持 Kitty Graphics Protocol 的终端（kitty / ghostty，均可通过 WSLg 运行 Linux 版）里可自动获得 Markdown 内联图、hover 预览等能力，在不支持的终端/Neovide 下默认自动跳过（`force = false`）。
+   - **终端副路径**：本仓库先前装有 `folke/snacks.nvim`（2026-10 已移除），其 **image 模块**（snacks.image）开箱即用，仅依赖 ImageMagick；在支持 Kitty Graphics Protocol 的终端（kitty / ghostty，均可通过 WSLg 运行 Linux 版）里可自动获得 Markdown 内联图、hover 预览等能力，在不支持的终端/Neovide 下默认自动跳过（`force = false`）。
 3. 若未来 Neovide 合并 [PR #3039](https://github.com/neovide/neovide/pull/3039)（目前仍是 draft，且依赖已被关闭的上游 neovim PR），内联渲染才有可能原生可用。
 
 ---

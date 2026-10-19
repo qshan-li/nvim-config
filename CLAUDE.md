@@ -22,7 +22,7 @@ Pure Neovim boot chain: `pure-nvim/core/init.lua` → creates cache dirs → set
 
 Uses **lazy.nvim**. Plugin specs are split by category in `lua/pure-nvim/plugins/` (ui, lang, completion, editor, tool). Each file returns a table keyed by plugin name → config. The pack loader auto-globs `plugins/*.lua` and merges everything.
 
-Per-plugin configs live in `lua/pure-nvim/configs/<category>/<plugin>.lua` — these are on the Lua path via `package.path` manipulation in `pack.lua`, so plugins reference them as `require("telescope")`, `require("fzf-lua")`, etc.
+Per-plugin configs live in `lua/pure-nvim/configs/<category>/<plugin>.lua` — these are on the Lua path via `package.path` manipulation in `pack.lua`, so plugin specs reference them as `require("ui.bufferline")`, `require("tool.nvim-tree")`, etc. (pattern: `require("<category>.<plugin>")`).
 
 Settings (colorscheme, SSH vs HTTPS, disabled plugins, GUI font, neovide config) are centralized in `lua/pure-nvim/core/settings.lua`.
 

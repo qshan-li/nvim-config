@@ -8,12 +8,12 @@ A custom Neovim configuration that runs in two distinct modes, sharing core sett
 - **Git** >= 2.30
 - **Nerd Font** (for icons) — recommended: [JetBrainsMono Nerd Font](https://www.nerdfonts.com/)
 - **Node.js** >= 18 (for Mason-installed LSP servers)
+- **fzf** >= 0.50 (required by [fzf-lua](https://github.com/ibhagwan/fzf-lua) for all pickers)
 - **External tools** (optional, for full functionality):
   - [fd](https://github.com/sharkdp/fd) — fast file finder (used by fuzzy finders)
   - [ripgrep](https://github.com/BurntSushi/ripgrep) — fast grep (used by search plugins)
   - [lazygit](https://github.com/jesseduffield/lazygit) — terminal UI for git
   - [stylua](https://github.com/JohnnyMorganz/StyLua) — Lua formatter
-  - [fzf](https://github.com/junegunn/fzf) — fuzzy finder (if using `fzf` search backend)
 
 ## Installation
 
@@ -66,7 +66,9 @@ Key settings are centralized in `lua/pure-nvim/core/settings.lua`:
 - `format_on_save` — Enable format on save (default: true)
 - `format_timeout` — Format timeout in ms (default: 1000)
 - `format_notify` — Show format notifications (default: false)
-- `format_modifications_only` — Format only changed lines (default: false)
+- `colorscheme` — Active color scheme (default: `rose-pine`; also `vitesse`, `catppuccin-*`, `teide`)
+- `mason_lsp_servers` — LSP servers to install (frontend only: `html`, `jsonls`, `lua_ls`, `marksman`, `vtsls`, `vue_ls`)
+- `mason_tools` — Formatters to install (`prettier`, `shfmt`, `stylua`)
 
 ## Directory Structure
 
