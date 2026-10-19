@@ -35,7 +35,6 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `V` / `K` | v | Move selection down/up |
 | `<` / `>` | v | Decrease/increase indent |
 | `<A-/>` | n, x | Toggle line comment |
-| `<leader>o` | n | Toggle spell check |
 | `<A-s>` | n | Save with sudo |
 
 ## Session
@@ -84,7 +83,6 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 |-----|------|-------------|
 | `af` / `if` | x, o | Select outer/inner function |
 | `ac` / `ic` | x, o | Select outer/inner class |
-| `<leader>a/A` | n | Swap next parameter (inner/outer) |
 | `][` / `]]` | n, x, o | Next function start/end |
 | `[[` / `[]` | n, x, o | Previous function start/end |
 | `]m` / `[m` | n, x, o | Next/prev class start |
@@ -166,14 +164,12 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 |-----|------|-------------|
 | `<leader>fd` | n | Workspace diagnostics (fzf-lua) |
 | `gto` | n | Workspace symbols (fzf-lua) |
-| `<leader>dk/dj` | n | Prev/next diagnostic |
+| `<leader>lj/lk` | n | Next/prev diagnostic |
 
 ## Window & Buffer
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<leader>/` | n | Horizontal split |
-| `<leader>\\` | n | Vertical split |
 | `<A-h/j/k/l>` | n | Resize window |
 | `<A-S-i/o>` | n | Move buffer next/prev |
 | `<A-q>` | n | Close buffer |
@@ -207,4 +203,4 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<leader>uh` | n | Switch theme |
+| `<leader>u` | n | Switch theme |

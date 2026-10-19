@@ -6,7 +6,6 @@ local map_callback = bind.map_callback
 local et = bind.escape_termcode
 
 local ts_to_select = require("nvim-treesitter-textobjects.select")
-local ts_to_swap = require("nvim-treesitter-textobjects.swap")
 local ts_to_move = require("nvim-treesitter-textobjects.move")
 local ts_to_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 
@@ -18,18 +17,18 @@ local mappings = {
 		["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
 
 		-- Builtins: Diagnostics
-		["n|<leader>dk"] = map_callback(function()
+		["n|<leader>lk"] = map_callback(function()
 				vim.diagnostic.goto_prev()
 			end)
 			:with_silent()
 			:with_noremap()
-			:with_desc("diagnostic: Prev"),
-		["n|<leader>dj"] = map_callback(function()
+			:with_desc("lsp: Prev diagnostic"),
+		["n|<leader>lj"] = map_callback(function()
 				vim.diagnostic.goto_next()
 			end)
 			:with_silent()
 			:with_noremap()
-			:with_desc("diagnostic: Next"),
+			:with_desc("lsp: Next diagnostic"),
 
 		-- Builtins: Insert mode
 		["i|<C-u>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_desc("edit: Delete previous block"),
@@ -78,7 +77,6 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("edit: Clear search highlight"),
-		["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"):with_desc("edit: Toggle spell check"),
 		["n|<A-/>"] = map_cmd("<Plug>(comment_toggle_linewise_current)")
 			:with_silent()
 			:with_desc("edit: Toggle line comment"),
@@ -259,19 +257,6 @@ local mappings = {
 			:with_silent()
 			:with_noremap()
 			:with_desc("editoxo: Select class.inner"),
-		-- Text objects: swap
-		["n|<leader>a"] = map_callback(function()
-				ts_to_swap.swap_next("@parameter.inner")
-			end)
-			:with_silent()
-			:with_noremap()
-			:with_desc("edit: Swap parameter.inner"),
-		["n|<leader>A"] = map_callback(function()
-				ts_to_swap.swap_next("@parameter.outer")
-			end)
-			:with_silent()
-			:with_noremap()
-			:with_desc("edit: Swap parameter.outer"),
 		-- Text objects: move
 		["nxo|]["] = map_callback(function()
 				ts_to_move.goto_next_start("@function.outer", "textobjects")

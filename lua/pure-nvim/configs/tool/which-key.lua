@@ -70,7 +70,6 @@ return function()
 		},
 		spec = {
 			{ "<leader>g", group = icons.git.Git .. " " .. i18n.t("git") },
-			{ "<leader>d", group = icons.ui.Bug .. " " .. i18n.t("diagnostics") },
 			{ "<leader>s", group = icons.cmp.tmux .. " " .. i18n.t("session") },
 			{ "<leader>b", group = icons.ui.Buffer .. " " .. i18n.t("buffer") },
 			{ "<leader>S", group = icons.ui.Search .. " " .. i18n.t("search") },
@@ -81,7 +80,6 @@ return function()
 			{ "<leader>t", group = icons.ui.Tab .. " " .. i18n.t("terminal") },
 			{ "<leader>O", group = icons.ui.Project .. " " .. i18n.t("open_with") },
 			{ "<leader>r", group = icons.ui.Note .. " " .. i18n.t("path") },
-			{ "<leader>u", group = icons.ui.Gear .. " " .. i18n.t("ui") },
 			{ "<leader>q", group = icons.ui.SignOut .. " " .. i18n.t("quit") },
 		},
 	})

@@ -6,10 +6,6 @@ local map_callback = bind.map_callback
 
 local mappings = {
 	builtins = {
-		-- Builtins: Window split
-		["n|<leader>/"] = map_cr("split"):with_noremap():with_silent():with_desc("window: Horizontal split"),
-		["n|<leader>\\"] = map_cr("vsplit"):with_noremap():with_silent():with_desc("window: Vertical split"),
-
 		-- Builtins: Buffer
 		["n|<leader>bn"] = map_cu("enew"):with_noremap():with_silent():with_desc("buffer: New"),
 
@@ -42,8 +38,6 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("buffer: Move current to prev"),
-		["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap():with_desc("buffer: Sort by extension"),
-		["n|<leader>bd"] = map_cr("BufferLineSortByDirectory"):with_noremap():with_desc("buffer: Sort by directory"),
 		["n|<A-1>"] = map_cr("BufferLineGoToBuffer 1"):with_noremap():with_silent():with_desc("buffer: Goto buffer 1"),
 		["n|<A-2>"] = map_cr("BufferLineGoToBuffer 2"):with_noremap():with_silent():with_desc("buffer: Goto buffer 2"),
 		["n|<A-3>"] = map_cr("BufferLineGoToBuffer 3"):with_noremap():with_silent():with_desc("buffer: Goto buffer 3"),

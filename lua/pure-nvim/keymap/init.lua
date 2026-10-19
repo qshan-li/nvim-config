@@ -16,14 +16,6 @@ local mappings = {
 			:with_noremap()
 			:with_nowait()
 			:with_desc("package: Install"),
-		["n|<leader>pl"] = map_cr("Lazy log"):with_silent():with_noremap():with_nowait():with_desc("package: Log"),
-		["n|<leader>pc"] = map_cr("Lazy check"):with_silent():with_noremap():with_nowait():with_desc("package: Check"),
-		["n|<leader>pd"] = map_cr("Lazy debug"):with_silent():with_noremap():with_nowait():with_desc("package: Debug"),
-		["n|<leader>pp"] = map_cr("Lazy profile")
-			:with_silent()
-			:with_noremap()
-			:with_nowait()
-			:with_desc("package: Profile"),
 		["n|<leader>pr"] = map_cr("Lazy restore")
 			:with_silent()
 			:with_noremap()

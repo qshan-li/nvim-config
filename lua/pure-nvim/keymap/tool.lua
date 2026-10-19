@@ -695,7 +695,7 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Resume last search"),
-		["n|<leader>uh"] = map_callback(function()
+		["n|<leader>u"] = map_callback(function()
 				local themes = {
 					{ name = "rose-pine", display = "Rose Pine (Auto)" },
 					{ name = "rose-pine-main", display = "Rose Pine (Main)" },
