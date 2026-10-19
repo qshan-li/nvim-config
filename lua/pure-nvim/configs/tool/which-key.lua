@@ -40,7 +40,10 @@ return function()
 			padding = { 1, 2 },
 			wo = { winblend = 0 },
 		},
-		expand = 1,
+		-- 组与叶子按字母交错排列，避免「左侧全是叶子、右侧全是组」的分裂观感
+		sort = { "local", "order", "alphanum", "mod" },
+		-- 不展开单子项组，保证 g/l/q 等组始终显示为组
+		expand = 0,
 		icons = {
 			group = "",
 			rules = false,
