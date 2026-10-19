@@ -17,6 +17,20 @@ local mappings = {
 		["n|<C-q>"] = map_cr("wq"):with_desc("edit: Save file and quit"),
 		["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
 
+		-- Builtins: Diagnostics
+		["n|<leader>dk"] = map_callback(function()
+				vim.diagnostic.goto_prev()
+			end)
+			:with_silent()
+			:with_noremap()
+			:with_desc("diagnostic: Prev"),
+		["n|<leader>dj"] = map_callback(function()
+				vim.diagnostic.goto_next()
+			end)
+			:with_silent()
+			:with_noremap()
+			:with_desc("diagnostic: Next"),
+
 		-- Builtins: Insert mode
 		["i|<C-u>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_desc("edit: Delete previous block"),
 		["i|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Move cursor to left"),
@@ -42,9 +56,6 @@ local mappings = {
 		["v|<"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),
 		["v|>"] = map_cmd(">gv"):with_desc("edit: Increase indent"),
 		["x|<A-/>"] = map_cmd("<Plug>(comment_toggle_linewise_visual)")
-			:with_silent()
-			:with_desc("edit: Toggle line comment"),
-		["x|<A-F12>/"] = map_cmd("<Plug>(comment_toggle_linewise_visual)")
 			:with_silent()
 			:with_desc("edit: Toggle line comment"),
 
@@ -180,12 +191,6 @@ local mappings = {
 			:with_noremap()
 			:with_desc("jump: Goto line"),
 		["nv|<leader>c"] = map_callback(function()
-				require("flash").jump()
-			end)
-			:with_silent()
-			:with_noremap()
-			:with_desc("jump: Goto chars"),
-		["nv|<leader>C"] = map_callback(function()
 				require("flash").jump()
 			end)
 			:with_silent()
