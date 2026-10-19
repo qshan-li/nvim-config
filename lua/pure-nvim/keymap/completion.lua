@@ -96,26 +96,14 @@ local M = {}
 function M.lsp(buf)
 	local map = {
 		-- LSP-related keymaps, ONLY effective in buffers with LSP(s) attached
-		["n|<leader>li"] = map_cr("LspInfo"):with_silent():with_buffer(buf):with_desc("lsp: Info"),
-		["n|<leader>lr"] = map_cr("LspRestart"):with_silent():with_buffer(buf):with_nowait():with_desc("lsp: Restart"),
+		["n|<leader>li"] = map_cr("checkhealth vim.lsp"):with_silent():with_buffer(buf):with_desc("lsp: Info"),
+		["n|<leader>lr"] = map_cr("lsp restart"):with_silent():with_buffer(buf):with_nowait():with_desc("lsp: Restart"),
 		["n|gto"] = map_callback(function()
 				require("fzf-lua").lsp_live_workspace_symbols()
 			end)
 			:with_silent()
 			:with_buffer(buf)
 			:with_desc("lsp: Toggle outline in Picker"),
-		["n|<leader>dk"] = map_callback(function()
-				vim.diagnostic.goto_prev()
-			end)
-			:with_silent()
-			:with_buffer(buf)
-			:with_desc("lsp: Prev diagnostic"),
-		["n|<leader>dj"] = map_callback(function()
-				vim.diagnostic.goto_next()
-			end)
-			:with_silent()
-			:with_buffer(buf)
-			:with_desc("lsp: Next diagnostic"),
 		["n|gs"] = map_callback(function()
 			vim.lsp.buf.signature_help()
 		end):with_desc("lsp: Signature help"),
