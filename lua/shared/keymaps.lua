@@ -7,6 +7,7 @@ function M.setup()
 	M.loaded = true
 
 	local i18n = require("shared.i18n")
+	local windows = require("shared.windows")
 
 	vim.keymap.set({ "i", "n", "s" }, "<Esc>", function()
 		vim.cmd("noh")
@@ -84,11 +85,14 @@ function M.setup()
 		require("shared.i18n").toggle_lang()
 	end, { desc = i18n.t("toggle_language") })
 
+	if not vim.g.vscode then
+		vim.keymap.set("n", "<leader>O1", windows.open_in_system_explorer, { desc = i18n.t("open_in_system_explorer") })
+		vim.keymap.set("n", "<leader>O2", windows.open_in_wsl_explorer, { desc = i18n.t("open_in_wsl_explorer") })
+		vim.keymap.set("n", "<leader>O3", windows.open_image_in_windows, { desc = i18n.t("open_image_in_windows") })
+	end
+
 	local function copy_to_clipboard(text, description)
-		local ok, error_message = require("shared.clipboard").copy(text)
-		if not ok then
-			return vim.notify("Failed to copy: " .. tostring(error_message), vim.log.levels.ERROR)
-		end
+		require("shared.clipboard").copy(text)
 		if description then
 			vim.notify(description, vim.log.levels.INFO)
 		end
