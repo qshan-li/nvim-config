@@ -137,6 +137,10 @@ return function()
 				quit_on_open = false,
 				resize_window = true,
 			},
+			-- 删除文件后不关闭原编辑窗口，避免只剩文件树
+			remove_file = {
+				close_window = false,
+			},
 		},
 	})
 end
