@@ -718,12 +718,12 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("ui: Switch theme"),
-		["n|<leader>r"] = map_callback(function()
+		["n|<leader>sp"] = map_callback(function()
 				pick_sessions()
 			end)
 			:with_noremap()
 			:with_silent()
-			:with_desc("tool: Session picker"),
+			:with_desc("session: Pick session"),
 	},
 }
 

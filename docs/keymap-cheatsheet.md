@@ -42,10 +42,10 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 
 | Key | Mode | Description |
 |-----|------|-------------|
+| `<leader>sp` | n | Pick session |
 | `<leader>ss` | n | Save session |
 | `<leader>sl` | n | Load current session |
 | `<leader>sd` | n | Delete current session |
-| `<leader>r` | n | Session picker |
 
 ## Search & Find
 
