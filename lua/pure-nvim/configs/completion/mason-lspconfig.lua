@@ -29,6 +29,11 @@ M.setup = function()
 		end
 	end
 
+	local allowed_servers = {}
+	for _, name in ipairs(settings.mason_lsp_servers) do
+		allowed_servers[name] = true
+	end
+
 	---A handler to setup all servers defined under `completion/servers/*.lua`
 	---@param lsp_name string
 	local function mason_lsp_handler(lsp_name)
@@ -83,6 +88,11 @@ please REMOVE your LSP configuration (rust_analyzer.lua) from the `servers` dire
 		local name = type(pkg) == "string" and pkg or pkg.name
 		local lsp_name = package_to_lspconfig[name]
 		if not lsp_name then
+			return
+		end
+		-- 只注册 settings 里显式列出的服务器。
+		-- 否则像 stylua 这类同时提供 LSP 模式的格式化工具会被误当成语言服务器。
+		if not allowed_servers[lsp_name] then
 			return
 		end
 

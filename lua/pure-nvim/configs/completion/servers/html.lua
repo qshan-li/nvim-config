@@ -1,6 +1,5 @@
--- https://github.com/vscode-langservers/vscode-html-languageserver-bin
+-- 使用 mason 的 html-lsp（vscode-html-language-server），不要覆盖 cmd
 return {
-	cmd = { "html-languageserver", "--stdio" },
 	filetypes = { "html" },
 	init_options = {
 		configurationSection = { "html", "css", "javascript" },
