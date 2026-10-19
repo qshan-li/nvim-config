@@ -5,7 +5,8 @@ end
 
 local lazy_lockfile = require("lazy.core.config").options.lockfile
 local config_path = vim.uv.fs_realpath(vim.fn.stdpath("config"))
-assert(lazy_lockfile == config_path .. "/lazy-lock-pure.json", "pure Neovim lockfile is incorrect")
+local expected_lockfile = vim.fs.joinpath(config_path, "lazy-lock-pure.json")
+assert(vim.fs.normalize(lazy_lockfile) == vim.fs.normalize(expected_lockfile), "pure Neovim lockfile is incorrect")
 assert(require("lazy.core.config").options.root:match("/site/lazy%-pure$"), "pure Neovim plugin root is not isolated")
 
 local diagnostic_highlight = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextError", link = false })
