@@ -203,13 +203,13 @@ local mappings = {
 			end)
 			:with_silent()
 			:with_noremap()
-			:with_desc("editn: Toggle search & replace panel"),
+			:with_desc("edit: Toggle search & replace panel"),
 		["n|<leader>Sp"] = map_callback(function()
 				require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
 			end)
 			:with_silent()
 			:with_noremap()
-			:with_desc("editn: search&replace current word (project)"),
+			:with_desc("edit: search&replace current word (project)"),
 		["v|<leader>Sp"] = map_callback(function()
 				require("grug-far").with_visual_selection()
 			end)
@@ -221,7 +221,7 @@ local mappings = {
 			end)
 			:with_silent()
 			:with_noremap()
-			:with_desc("editn: search & replace current word (file)"),
+			:with_desc("edit: search & replace current word (file)"),
 
 		["o|m"] = map_callback(function()
 				require("flash").treesitter()
@@ -231,7 +231,7 @@ local mappings = {
 			:with_desc("jump: Operate across syntax tree"),
 
 		-- Plugin: suda.vim
-		["n|<A-s>"] = map_cu("SudaWrite"):with_silent():with_noremap():with_desc("editn: Save file using sudo"),
+		["n|<A-s>"] = map_cu("SudaWrite"):with_silent():with_noremap():with_desc("edit: Save file using sudo"),
 
 		-- Plugin: nvim-treesitter-textobjects
 		-- Text objects: select
@@ -265,13 +265,13 @@ local mappings = {
 			end)
 			:with_silent()
 			:with_noremap()
-			:with_desc("editn: Swap parameter.inner"),
+			:with_desc("edit: Swap parameter.inner"),
 		["n|<leader>A"] = map_callback(function()
 				ts_to_swap.swap_next("@parameter.outer")
 			end)
 			:with_silent()
 			:with_noremap()
-			:with_desc("editn: Swap parameter.outer"),
+			:with_desc("edit: Swap parameter.outer"),
 		-- Text objects: move
 		["nxo|]["] = map_callback(function()
 				ts_to_move.goto_next_start("@function.outer", "textobjects")
