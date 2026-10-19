@@ -37,10 +37,6 @@ return function()
 
 	if colorscheme_name:find("rose%-pine") then
 		opts.highlights = require("rose-pine.plugins.bufferline")
-	elseif colorscheme_name:find("vitesse") then
-		opts.highlights = require("vitesse").bufferline.highlights
-	elseif colorscheme_name:find("catppuccin") then
-		opts.highlights = require("catppuccin.groups.integrations.bufferline").get({ styles = { "bold" } })
 	end
 
 	require("pure-nvim.utils").load_plugin("bufferline", opts)

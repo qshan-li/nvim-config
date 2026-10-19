@@ -66,7 +66,7 @@ Key settings are centralized in `lua/pure-nvim/core/settings.lua`:
 - `format_on_save` — Enable format on save (default: true)
 - `format_timeout` — Format timeout in ms (default: 1000)
 - `format_notify` — Show format notifications (default: false)
-- `colorscheme` — Active color scheme (default: `rose-pine`; also `vitesse`, `catppuccin-*`, `teide`)
+- `colorscheme` — Active color scheme (default: `rose-pine`; also `rose-pine-main`, `rose-pine-moon`, `rose-pine-dawn`)
 - `mason_lsp_servers` — LSP servers to install (frontend only: `html`, `jsonls`, `lua_ls`, `marksman`, `vtsls`, `vue_ls`)
 - `mason_tools` — Formatters to install (`prettier`, `shfmt`, `stylua`)
 

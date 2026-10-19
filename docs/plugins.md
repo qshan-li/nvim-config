@@ -13,9 +13,6 @@ Pure Neovim uses `lazy-lock-pure.json` and an isolated `site/lazy-pure` plugin r
 | [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Tab-like buffer line |
 | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | Status line |
 | [rose-pine](https://github.com/rose-pine/neovim) | Color scheme (Rose Pine) |
-| [neovim-theme-vitesse](https://github.com/qshan-li/neovim-theme-vitesse) | Color scheme (Vitesse) |
-| [catppuccin](https://github.com/catppuccin/nvim) | Color scheme (Catppuccin) |
-| [teide.nvim](https://github.com/serhez/teide.nvim) | Color scheme (Teide) |
 | [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) | Smooth scrolling |
 | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git diff signs in gutter |
 | [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Indent guides |

@@ -24,22 +24,6 @@ ui["rose-pine/neovim"] = {
 	name = "rose-pine",
 	config = require("ui.rose-pine"),
 }
-ui["qshan-li/neovim-theme-vitesse"] = {
-	lazy = false,
-	priority = 1000,
-	config = require("ui.vitesse"),
-}
-ui["catppuccin/nvim"] = {
-	lazy = false,
-	name = "catppuccin",
-	priority = 1000,
-	config = require("ui.catppuccin"),
-}
-ui["serhez/teide.nvim"] = {
-	lazy = false,
-	name = "teide",
-	priority = 1000,
-}
 ui["karb94/neoscroll.nvim"] = {
 	lazy = true,
 	event = "VeryLazy",
