@@ -300,6 +300,53 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
+-- fzf-lua 的面板运行在终端缓冲区里，窗口是浮窗。
+-- 面板内 Ctrl+j/k 用于上下移动光标，Ctrl+h/l 用于收起面板并切换窗口。
+local function fzf_panel_open()
+	return vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "fzf"
+end
+
+-- 把按键原样送进面板，交给 fzf 处理
+local function send_to_panel(lhs)
+	local keys = vim.api.nvim_replace_termcodes(lhs, true, false, true)
+	vim.api.nvim_feedkeys(keys, "n", false)
+end
+
+-- 收起面板，再移动焦点
+local function close_panel_and_focus(direction)
+	local win = vim.api.nvim_get_current_win()
+	if vim.api.nvim_win_get_config(win).relative == "" then
+		return
+	end
+
+	-- 先让 fzf 自己退出
+	send_to_panel("<Esc>")
+
+	vim.defer_fn(function()
+		-- 兜底：fzf 未退出就直接关闭浮窗
+		if vim.api.nvim_win_is_valid(win) then
+			pcall(vim.api.nvim_win_close, win, true)
+		end
+		require("smart-splits")["move_cursor_" .. direction]()
+	end, 50)
+end
+
+local function terminal_focus(direction)
+	return function()
+		if not fzf_panel_open() then
+			require("smart-splits")["move_cursor_" .. direction]()
+			return
+		end
+
+		if direction == "down" or direction == "up" then
+			send_to_panel(direction == "down" and "<C-j>" or "<C-k>")
+			return
+		end
+
+		close_panel_and_focus(direction)
+	end
+end
+
 local mappings = {
 	plugins = {
 		["n|<leader>e"] = map_cr("NvimTreeToggle"):with_noremap():with_silent():with_desc("filetree: Toggle"),
@@ -526,27 +573,11 @@ local mappings = {
 			:with_desc("terminal: Close terminal instance"),
 
 		-- 终端内使用 Ctrl+hjkl 进行焦点移动
-		["t|<C-h>"] = map_callback(function()
-				require("smart-splits").move_cursor_left()
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("window: Focus left"),
-		["t|<C-j>"] = map_callback(function()
-				require("smart-splits").move_cursor_down()
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("window: Focus down"),
-		["t|<C-k>"] = map_callback(function()
-				require("smart-splits").move_cursor_up()
-			end)
-			:with_noremap()
-			:with_silent()
-			:with_desc("window: Focus up"),
-		["t|<C-l>"] = map_callback(function()
-				require("smart-splits").move_cursor_right()
-			end)
+		-- fzf-lua 的面板也是终端缓冲区，所以这里要区分面板与普通终端
+		["t|<C-h>"] = map_callback(terminal_focus("left")):with_noremap():with_silent():with_desc("window: Focus left"),
+		["t|<C-j>"] = map_callback(terminal_focus("down")):with_noremap():with_silent():with_desc("window: Focus down"),
+		["t|<C-k>"] = map_callback(terminal_focus("up")):with_noremap():with_silent():with_desc("window: Focus up"),
+		["t|<C-l>"] = map_callback(terminal_focus("right"))
 			:with_noremap()
 			:with_silent()
 			:with_desc("window: Focus right"),
