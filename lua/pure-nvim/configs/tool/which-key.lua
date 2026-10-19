@@ -15,7 +15,7 @@ return function()
 		},
 		disable = {
 			bt = { "terminal" },
-			ft = { "toggleterm", "snacks_terminal", "terminal", "term" },
+			ft = { "toggleterm", "terminal", "term" },
 		},
 
 		plugins = {

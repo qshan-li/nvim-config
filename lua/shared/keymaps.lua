@@ -36,26 +36,13 @@ function M.setup()
 	vim.keymap.set("n", "p", "P", { desc = "Paste before cursor (preserve register)", noremap = true })
 	vim.keymap.set("v", "p", "P", { desc = "Paste before cursor (preserve register)", noremap = true })
 
-	vim.api.nvim_create_autocmd("FileType", {
-		pattern = { "snacks_picker_input" },
-		callback = function()
-			vim.keymap.set("i", "<C-v>", function()
-				vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
-			end, { buffer = 0, desc = "Paste clipboard in picker" })
-		end,
-	})
-
 	-- 在特定 buffer 的 normal 模式下添加 Ctrl+C 映射为 Esc
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = {
 			"minifiles",
-			"trouble",
 			"TelescopePrompt",
 			"lazy",
 			"mason",
-			"snacks_notifier",
-			"snacks_dashboard",
-			"snacks_terminal",
 		},
 		callback = function()
 			vim.keymap.set("n", "<C-c>", "<Esc>", { buffer = 0, desc = "Close panel" })

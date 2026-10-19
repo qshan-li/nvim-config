@@ -155,51 +155,87 @@ local function prev_terminal_instance()
 end
 
 local function pick_panel_term()
-	require("snacks").picker.pick({
-		source = "terminals",
-		title = "Terminals",
-		format = "text",
-		finder = function()
-			local items = { { id = -1, text = "+ New terminal" } }
-			local ids = vim.tbl_keys(panel_term_names)
-			table.sort(ids)
-			for _, id in ipairs(ids) do
-				table.insert(items, { id = id, text = panel_term_names[id] })
-			end
-			return items
-		end,
-		confirm = function(picker, item)
-			picker:close()
-			if not item then
-				return
-			end
-			if item.id == -1 then
-				new_panel_term()
-			else
-				open_panel_term(item.id)
-			end
-		end,
+	local items = { "+ New terminal" }
+	local name_to_id = {}
+	local ids = vim.tbl_keys(panel_term_names)
+	table.sort(ids)
+	for _, id in ipairs(ids) do
+		local name = panel_term_names[id]
+		if name then
+			table.insert(items, name)
+			name_to_id[name] = id
+		end
+	end
+
+	require("fzf-lua").fzf_exec(items, {
+		prompt = "Terminals> ",
 		actions = {
-			kill_terminal = function(picker)
-				local item = picker:current()
-				if not item or not item.id or item.id == -1 then
+			["default"] = function(selected)
+				local choice = selected and selected[1]
+				if not choice then
 					return
 				end
-				kill_panel_term(item.id)
-				picker:find()
+				if choice == "+ New terminal" then
+					new_panel_term()
+				else
+					open_panel_term(name_to_id[choice])
+				end
+			end,
+			["ctrl-d"] = function(selected)
+				local choice = selected and selected[1]
+				local id = choice and name_to_id[choice]
+				if not id then
+					return
+				end
+				kill_panel_term(id)
+				pick_panel_term()
 			end,
 		},
-		win = {
-			input = {
-				keys = {
-					["<C-d>"] = { "kill_terminal", mode = { "n", "i" }, desc = "Kill terminal" },
-				},
-			},
-			list = {
-				keys = {
-					["d"] = "kill_terminal",
-				},
-			},
+	})
+end
+
+local function pick_sessions()
+	local session_dir = vim.fn.stdpath("data") .. "/sessions/"
+	local items = {}
+	local display_to_file = {}
+	local files = vim.fn.readdir(session_dir)
+	for _, f in ipairs(files) do
+		if f:match("%.vim$") then
+			local path = session_dir .. f
+			local display = f:gsub("%%", "/"):gsub("%.vim$", ""):gsub("@@", "@", 1)
+			table.insert(items, display)
+			display_to_file[display] = path
+		end
+	end
+
+	require("fzf-lua").fzf_exec(items, {
+		prompt = "Sessions> ",
+		actions = {
+			["default"] = function(selected)
+				local choice = selected and selected[1]
+				local file = choice and display_to_file[choice]
+				if not file then
+					return
+				end
+				vim.schedule(function()
+					require("persisted").load({ session = file })
+				end)
+			end,
+			["ctrl-d"] = function(selected)
+				local choice = selected and selected[1]
+				local file = choice and display_to_file[choice]
+				if not file then
+					return
+				end
+				vim.ui.select({ "Yes", "No" }, {
+					prompt = "Delete session: " .. choice .. "?",
+				}, function(answer)
+					if answer == "Yes" then
+						vim.fn.delete(file)
+						pick_sessions()
+					end
+				end)
+			end,
 		},
 	})
 end
@@ -558,7 +594,7 @@ local mappings = {
 					end
 				end
 				if #listed_buffers > 1 then
-					require("snacks").picker.buffers()
+					require("fzf-lua").buffers()
 				end
 			end)
 			:with_noremap()
@@ -574,56 +610,56 @@ local mappings = {
 					end
 				end
 				if #listed_buffers > 1 then
-					require("snacks").picker.buffers()
+					require("fzf-lua").buffers()
 				end
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Switch buffer (terminal)"),
 		["n|<leader>fc"] = map_callback(function()
-				require("snacks").picker.pickers()
+				require("fzf-lua").builtin()
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Open Pickers collections"),
 		["n|<leader>ff"] = map_callback(function()
-				require("snacks").picker.smart({ sources = { files = { hidden = true } } })
+				require("fzf-lua").files({ hidden = true })
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Find files"),
 		["n|<leader>fp"] = map_callback(function()
-				require("snacks").picker.grep()
+				require("fzf-lua").grep()
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Find patterns"),
 		["v|<leader>fs"] = map_callback(function()
-				require("snacks").picker.grep_word()
+				require("fzf-lua").grep_cword()
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Find word under cursor"),
 		["n|<leader>fg"] = map_callback(function()
-				require("snacks").picker.git_status()
+				require("fzf-lua").git_status()
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Git status"),
 		["n|<leader>fd"] = map_callback(function()
-				require("snacks").picker.diagnostics()
+				require("fzf-lua").lsp_workspace_diagnostics()
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Diagnostics"),
 		["n|<leader>fm"] = map_callback(function()
-				require("snacks").picker.keymaps()
+				require("fzf-lua").keymaps()
 			end)
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Keymaps"),
 		["n|<leader>fR"] = map_callback(function()
-				require("snacks").picker.resume()
+				require("fzf-lua").resume()
 			end)
 			:with_noremap()
 			:with_silent()
@@ -656,54 +692,7 @@ local mappings = {
 			:with_silent()
 			:with_desc("ui: Switch theme"),
 		["n|<leader>r"] = map_callback(function()
-				local session_dir = vim.fn.stdpath("data") .. "/sessions/"
-				require("snacks").picker.pick({
-					source = "sessions",
-					title = "Sessions",
-					format = "text",
-					finder = function()
-						local files = vim.fn.readdir(session_dir)
-						local items = {}
-						for _, f in ipairs(files) do
-							if f:match("%.vim$") then
-								local path = session_dir .. f
-								local display = f:gsub("%%", "/"):gsub("%.vim$", ""):gsub("@@", "@", 1)
-								table.insert(items, { file = path, text = display })
-							end
-						end
-						return items
-					end,
-					confirm = function(picker, item)
-						picker:close()
-						if item then
-							vim.schedule(function()
-								require("persisted").load({ session = item.file })
-							end)
-						end
-					end,
-					actions = {
-						delete_session = function(picker)
-							local item = picker:current()
-							if item and item.file then
-								vim.ui.select({ "Yes", "No" }, {
-									prompt = "Delete session: " .. item.text .. "?",
-								}, function(choice)
-									if choice == "Yes" then
-										vim.fn.delete(item.file)
-										picker:find()
-									end
-								end)
-							end
-						end,
-					},
-					win = {
-						input = {
-							keys = {
-								["<C-d>"] = { "delete_session", mode = { "n", "i" }, desc = "Delete session" },
-							},
-						},
-					},
-				})
+				pick_sessions()
 			end)
 			:with_noremap()
 			:with_silent()

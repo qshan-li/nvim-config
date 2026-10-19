@@ -99,7 +99,7 @@ function M.lsp(buf)
 		["n|<leader>li"] = map_cr("LspInfo"):with_silent():with_buffer(buf):with_desc("lsp: Info"),
 		["n|<leader>lr"] = map_cr("LspRestart"):with_silent():with_buffer(buf):with_nowait():with_desc("lsp: Restart"),
 		["n|gto"] = map_callback(function()
-				require("snacks").picker.lsp_symbols()
+				require("fzf-lua").lsp_live_workspace_symbols()
 			end)
 			:with_silent()
 			:with_buffer(buf)
