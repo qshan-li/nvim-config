@@ -48,6 +48,12 @@ return function()
 	require("nvim-tree").setup({
 		on_attach = on_attach,
 		sort_by = "case_sensitive",
+		-- 该功能注册的 BufEnter 回调未校验 buffer 有效性，
+		-- 删除文件关窗时会报 "Invalid buffer id"。
+		-- 上游 master（0142ac3, 2026-10-19）仍未修复。
+		hijack_directories = {
+			enable = false,
+		},
 		log = {
 			enable = false,
 		},
