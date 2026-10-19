@@ -106,10 +106,6 @@ lua/
 - Options use `vim.o` or `vim.opt`; keymaps use `vim.keymap.set` with `{ desc = ... }`.
 - Conventional commits preferred (feat:, fix:, refactor:).
 
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
 ## License
 
 [MIT](LICENSE)
