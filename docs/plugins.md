@@ -86,4 +86,3 @@ Language servers are limited to frontend development. See `settings.mason_lsp_se
 | [which-key.nvim](https://github.com/folke/which-key.nvim) | Key binding hints |
 | [dropbar.nvim](https://github.com/Bekaboo/dropbar.nvim) | Breadcrumb navigation |
 | [vim-wilder](https://github.com/gelguy/wilder.nvim) | Wildmenu enhancements |
-| [fcitx5.nvim](https://github.com/pysan3/fcitx5.nvim) | Input method auto-switch |
