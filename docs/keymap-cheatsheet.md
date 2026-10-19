@@ -16,6 +16,9 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `<leader>ta` | n | Toggle i18n language |
 | `<leader>rr` | n | Copy file path (absolute) |
 | `<leader>rd` | n | Copy directory path |
+| `<leader>O1` | n | Open in system explorer |
+| `<leader>O2` | n | Open in WSL explorer |
+| `<leader>O3` | n | Open image in Windows viewer |
 | `<C-CR>` | n | Add empty line below |
 
 ## Editing (Pure Neovim)
@@ -103,9 +106,8 @@ Leader key: `<Space>` (set in `shared/options.lua`)
 | `K` | n | Show documentation |
 | `<A-f12>/` | n, v | Code action |
 | `<leader>u` | n | Go to references |
-| `<leader>dk/dj` | n | Prev/next diagnostic |
-| `<leader>li` | n | LSP info |
-| `<leader>lr` | n | Restart LSP |
+| `<leader>li` | n | LSP info (`:checkhealth vim.lsp`) |
+| `<leader>lr` | n | Restart LSP (`:lsp restart`) |
 | `<leader>lv` | n | Toggle diagnostic virtual text |
 | `<leader>lh` | n | Toggle inlay hints |
 

@@ -23,14 +23,6 @@ return function()
 			left_trunc_marker = icons.ui.Left,
 			right_trunc_marker = icons.ui.Right,
 			modified_icon = icons.ui.Modified_alt,
-			offsets = {
-				{
-					filetype = "minifiles",
-					text = "File Explorer",
-					text_align = "center",
-					padding = 0,
-				},
-			},
 		},
 		highlights = {},
 	}

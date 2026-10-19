@@ -39,8 +39,6 @@ function M.setup()
 	-- 在特定 buffer 的 normal 模式下添加 Ctrl+C 映射为 Esc
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = {
-			"minifiles",
-			"TelescopePrompt",
 			"lazy",
 			"mason",
 		},

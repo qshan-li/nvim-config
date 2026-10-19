@@ -33,17 +33,12 @@ return function()
 			exclude = {
 				"minintro",
 				"checkhealth",
-				"dap-repl",
 				"diff",
 				"help",
 				"log",
 				"notify",
-				"minifiles",
-				"Outline",
 				"qf",
-				"TelescopePrompt",
 				"toggleterm",
-				"undotree",
 			},
 		},
 		colors = {

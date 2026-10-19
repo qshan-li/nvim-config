@@ -553,7 +553,6 @@ return function()
 				"", -- for all buffers without a file type
 				"minintro",
 				"checkhealth",
-				"dap-repl",
 				"diff",
 				"git",
 				"gitcommit",
@@ -561,14 +560,9 @@ return function()
 				"log",
 				"markdown",
 				"notify",
-				"minifiles",
-				"Outline",
 				"qf",
-				"TelescopePrompt",
 				"text",
 				"toggleterm",
-				"undotree",
-				"vimwiki",
 			},
 		},
 	})

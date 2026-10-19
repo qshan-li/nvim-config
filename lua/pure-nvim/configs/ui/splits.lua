@@ -7,6 +7,5 @@ return function()
 			"quickfix",
 			"prompt",
 		},
-		ignored_filetypes = { "minifiles" },
 	})
 end

@@ -11,14 +11,9 @@ return function()
 		-- Exclude filetypes or buftypes from highlighting
 		exclude_filetypes = {
 			"minintro",
-			"dap-repl",
 			"git",
 			"notify",
-			"minifiles",
-			"Outline",
-			"TelescopePrompt",
 			"toggleterm",
-			"undotree",
 		},
 		exclude_buftypes = {
 			"nofile",

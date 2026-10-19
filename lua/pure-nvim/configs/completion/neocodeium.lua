@@ -23,8 +23,6 @@ return function()
 			gitcommit = false,
 			gitrebase = false,
 			["."] = false,
-			TelescopePrompt = false,
-			["dap-repl"] = false,
 		},
 	})
 end

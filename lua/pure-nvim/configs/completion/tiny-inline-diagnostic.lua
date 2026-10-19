@@ -27,18 +27,12 @@ return function()
 		disabled_ft = {
 			"minintro",
 			"checkhealth",
-			"dap-repl",
 			"diff",
 			"help",
 			"log",
 			"notify",
-			"minifiles",
-			"Outline",
 			"qf",
-			"TelescopePrompt",
 			"toggleterm",
-			"undotree",
-			"vimwiki",
 		},
 	})
 

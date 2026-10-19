@@ -20,18 +20,12 @@ return function()
 			disabled_filetypes = {
 				"minintro",
 				"checkhealth",
-				"dap-repl",
 				"diff",
 				"help",
 				"log",
 				"notify",
-				"minifiles",
-				"Outline",
 				"qf",
-				"TelescopePrompt",
 				"toggleterm",
-				"undotree",
-				"vimwiki",
 			},
 		},
 	})
