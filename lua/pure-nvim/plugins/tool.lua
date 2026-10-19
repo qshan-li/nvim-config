@@ -8,12 +8,6 @@ tool["Bekaboo/dropbar.nvim"] = {
 		"nvim-tree/nvim-web-devicons",
 	},
 }
--- tool["echasnovski/mini.files"] = {
--- 	lazy = true,
--- 	event = "VeryLazy",
--- 	config = require("tool.mini-files"),
--- 	dependencies = { "nvim-tree/nvim-web-devicons" },
--- }
 tool["nvim-tree/nvim-tree.lua"] = {
 	lazy = true,
 	cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },

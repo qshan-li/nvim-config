@@ -23,7 +23,7 @@ return function()
 			end
 		end, opts("Yank Path"))
 
-		-- Vim 风格导航（类似 mini.files）
+		-- Vim 风格导航：h/l 对应收起与展开
 		-- l: 展开目录或打开文件
 		-- h: 收起目录或返回上级
 		vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
