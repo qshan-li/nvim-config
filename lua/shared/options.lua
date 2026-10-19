@@ -23,6 +23,13 @@ function M.setup()
 	vim.g.mapleader = " "
 	vim.g.maplocalleader = " "
 
+	-- 以下选项 vscode-neovim 扩展会读取，保证与纯 Neovim 侧行为一致
+	-- unnamedplus: yy 等操作经由扩展的 g:vscode_clipboard 同步到系统剪贴板
+	vim.o.clipboard = "unnamedplus"
+	vim.o.ignorecase = true
+	vim.o.smartcase = true
+	vim.o.timeoutlen = 300
+
 	-- Nerd Font
 	vim.g.have_nerd_font = true
 
